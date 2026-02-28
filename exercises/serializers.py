@@ -10,7 +10,7 @@ class ExerciseSerializer(serializers.ModelSerializer):
         model = Exercise
         fields = (
             "id",
-            "owner"
+            "owner",
             "name",
             "muscle_group",
         )

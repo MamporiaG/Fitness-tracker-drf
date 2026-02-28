@@ -4,8 +4,8 @@ from rest_framework import serializers
 from django.contrib.auth.models import User
 
 
-
 # Serializer for the registration of users
+
 
 class RegisterSerializer(serializers.ModelSerializer):
     # write_only=True ensures that password won't be shown in response
@@ -16,6 +16,7 @@ class RegisterSerializer(serializers.ModelSerializer):
         fields = (
             "id",
             "username",
+            "email",
             "password",
         )
 

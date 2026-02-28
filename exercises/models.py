@@ -1,7 +1,7 @@
 # exercies/models.py
 
 from django.db import models
-from django.conf import settings 
+from django.conf import settings
 
 
 class Exercise(models.Model):
@@ -19,9 +19,7 @@ class Exercise(models.Model):
         CALVES = "calves"
 
     owner = models.ForeignKey(
-        settings.AUTH_USER_MODEL, 
-        on_delete=models.CASCADE,
-        related_name="exercises"
+        settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name="exercises"
     )
 
     name = models.CharField(max_length=100)
