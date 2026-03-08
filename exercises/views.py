@@ -1,3 +1,5 @@
+# exercises/views.py
+
 from rest_framework import generics
 from rest_framework.permissions import SAFE_METHODS, BasePermission
 
@@ -20,18 +22,18 @@ class IsOwnerAdminOrReadOnly(BasePermission):
         return False
 
 
-def has_object_permission(self, request, view, obj):
-    # 2. Object-level permission: Only runs on detail views (PUT, DELETE, single GET).
+    def has_object_permission(self, request, view, obj):
+        # 2. Object-level permission: Only runs on detail views (PUT, DELETE, single GET).
 
-    # Anyone authenticated can read the specific object
-    if request.method in SAFE_METHODS:
-        return True
+        # Anyone authenticated can read the specific object
+        if request.method in SAFE_METHODS:
+            return True
 
-    # To modify or delete, the user must be an admin OR the owner of the object
-    if request.user.is_staff or obj.owner == request.user:
-        return True
+        # To modify or delete, the user must be an admin OR the owner of the object
+        if request.user.is_staff or obj.owner == request.user:
+            return True
 
-    return False
+        return False
 
 
 class ExerciseListCreateView(generics.ListCreateAPIView):
