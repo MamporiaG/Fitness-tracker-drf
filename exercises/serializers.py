@@ -5,6 +5,7 @@ from .models import Exercise
 
 
 class ExerciseSerializer(serializers.ModelSerializer):
+    muscle_group = serializers.ChoiceField(choices=Exercise.MuscleGroup.choices)
 
     class Meta:
         model = Exercise
